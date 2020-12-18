@@ -78,7 +78,7 @@
       background: white;
     }
   </style>
-  <body onresize="resizeEvent()">
+  <body onresize="resizeEvent">
     <!-- <i class="ri-phone-line"></i>
     <i class="ri-money-dollar-circle-line"></i>
     <i class="ri-taxi-line"></i>
@@ -202,48 +202,49 @@
 
       let activeSection = "home";
 
+      const homediv = document.getElementById("home");
+      homediv.scrollIntoView();
+      const servicesdiv = document.getElementById("services");
+      const contactsdiv = document.getElementById("contact");
+
       const section = document.getElementsByClassName("fullvh");
-      // console.log(section);
 
       let winheight = window.innerHeight;
       let winwidth = window.innerWidth;
-      // console.log(`${winheight} ${winwidth}`);
 
       let sectionArr = [...section];
-      // console.log(sectionArr);
 
       sectionArr.forEach((elem, index) => {
-        // console.log(elem);
         elem.style.cssText = `height: ${winheight}px; position: relative;`;
-        // width: ${winwidth}px;
       });
 
       function resizeEvent() {
         let winheight = window.innerHeight;
         let winwidth = window.innerWidth;
         sectionArr.forEach((elem, index) => {
-          // console.log(elem);
           elem.style.cssText = `height: ${winheight}px; position: relative;`;
         });
       }
 
       function navigate(dest) {
         let elem = document.getElementById(dest);
-        elem.scrollIntoView({ behavior: "smooth" });
+        elem.scrollIntoView({
+          block: "start",
+          inline: "nearest",
+        });
         activeSection = dest;
       }
 
       window.addEventListener("wheel", myFunction);
+
       function myFunction(e) {
         if (e.deltaY > 0) {
-          // console.log("Scroll down");
           if (activeSection === "home") {
             navigate("services");
           } else if (activeSection === "services") {
             navigate("contact");
           }
         } else {
-          // console.log("scroll up");
           if (activeSection === "contact") {
             navigate("services");
           } else if (activeSection === "services") {
@@ -252,25 +253,27 @@
         }
       }
 
-      window.addEventListener("swiped", function (e) {
+      window.addEventListener("swiped", swipefunction);
+      function swipefunction(e) {
         let direction = e.detail.dir;
-        if (e.detail.dir === "up") {
-          // When you swipe up (bottom to top),
-          // you expect page to move down
-          // so actions are reversed from mouse direction
+        console.log(`Swipe direction: ${direction}`);
+
+        if (direction === "up") {
           if (activeSection === "home") {
             navigate("services");
           } else if (activeSection === "services") {
             navigate("contact");
           }
-        } else {
+        }
+
+        if (direction === "down") {
           if (activeSection === "contact") {
             navigate("services");
           } else if (activeSection === "services") {
             navigate("home");
           }
         }
-      });
+      }
     </script>
   </body>
 </html>
