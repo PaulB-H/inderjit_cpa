@@ -26,9 +26,9 @@
       padding: 0;
       box-sizing: border-box;
     }
+    html,
     body {
       overflow-y: hidden;
-      overflow-x: hidden;
     }
     h1,
     h2,
@@ -112,6 +112,8 @@
           color: #006fb9;
           position: absolute;
           bottom: 10%;
+          user-select: none;
+          cursor: pointer;
         "
         onclick="navigate('services')"
       >
@@ -183,13 +185,13 @@
           <br />
           <span style="border-bottom: 1px solid">Services</span>
         </h1>
-        <h1>Contact</h1>
+        <h1 style="margin-bottom: 25px">Contact</h1>
         <a href="mailto:tax@ibansalcpa.com">
           <i class="ri-mail-line"></i> tax@ibansalcpa.com
         </a>
-        <hr style="width: 150%" />
-        <h1>Hours</h1>
-        <div id="hours">
+        <hr style="width: 150%; margin: 25px 0px" />
+        <h1 style="margin-bottom: 25px">Hours</h1>
+        <div id="hours" style="margin-bottom: 25px">
           <p>Mon -> Fri</p>
           <p>10:00->6:00</p>
           <p>Saturday</p>
@@ -211,7 +213,7 @@
       let activeSection = "home";
 
       const homediv = document.getElementById("home");
-      homediv.scrollIntoView();
+
       const servicesdiv = document.getElementById("services");
       const contactsdiv = document.getElementById("contact");
 
@@ -241,7 +243,7 @@
         console.log(`Nav to ${dest}`);
 
         elem.scrollIntoView({
-          behavior: "smooth",
+          // behavior: "smooth",
           block: "start",
           inline: "nearest",
         });
@@ -267,6 +269,7 @@
 
       document.addEventListener("swiped", swipefunction);
       function swipefunction(e) {
+        e.preventDefault();
         let direction = e.detail.dir;
 
         if (direction === "up") {
@@ -285,6 +288,10 @@
           }
         }
       }
+
+      document.addEventListener("DOMContentLoaded", function (event) {
+        window.scrollTo(0, 0);
+      });
     </script>
   </body>
 </html>
