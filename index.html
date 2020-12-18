@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- AOS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- Remix Icon https://remixicon.com/ -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hind&family=Libre+Baskerville&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    /* font-family: "Hind", sans-serif;
+    font-family: "Libre Baskerville", serif; */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      overflow-y: hidden;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      font-family: "Libre Baskerville", serif;
+    }
+    p {
+      font-family: "Hind", sans-serif;
+    }
+    i[class^="ri-"] {
+      /* font-size: xx-large; */
+      vertical-align: sub;
+    }
+    a {
+      text-decoration: none;
+      color: rgb(56, 56, 255);
+      font-family: "Hind", sans-serif;
+    }
+    section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .fullvh {
+    }
+    #home {
+    }
+
+    #hours {
+      display: grid;
+      grid-template-columns: auto auto;
+      max-width: max-content;
+      grid-gap: 1px;
+      background: darkgray;
+    }
+    #hours p {
+      padding-left: 5px;
+      padding-right: 5px;
+      background: white;
+    }
+  </style>
+  <body onresize="resizeEvent()">
+    <!-- <i class="ri-phone-line"></i>
+    <i class="ri-money-dollar-circle-line"></i>
+    <i class="ri-taxi-line"></i>
+    <i class="ri-mail-line"></i>
+    <i class="ri-calculator-line"></i> -->
+
+    <section
+      class="fullvh"
+      id="home"
+      data-aos="fade-right"
+      style="position: relative"
+    >
+      <div class="wrapper">
+        <div
+          style="background: #006fb9; padding: 10px; width: 100%; color: white"
+        >
+          <h1 style="font-size: xx-large">Inderjit Bansal CPA</h1>
+          <p style="font-size: larger; float: right">
+            Tax preparation for individuals and businesses
+          </p>
+        </div>
+
+        <img src="./cpa_logo.jpg" alt="" style="max-width: 50%" />
+      </div>
+      <h1
+        style="
+          padding: 20px;
+          text-align: center;
+          color: #006fb9;
+          position: absolute;
+          bottom: 10%;
+        "
+        onclick="navigate('services')"
+      >
+        <span style="border-bottom: 1px solid">Services</span>
+        <br />
+        <i class="ri-arrow-down-s-line"></i>
+      </h1>
+    </section>
+
+    <section id="services" class="fullvh" style="position: relative">
+      <div class="wrapper">
+        <h1
+          style="
+            padding: 20px;
+            text-align: center;
+            color: #006fb9;
+            position: absolute;
+            top: 10%;
+          "
+          onclick="navigate('home')"
+        >
+          <i class="ri-arrow-up-s-line"></i>
+          <br />
+          <span style="border-bottom: 1px solid">Home</span>
+        </h1>
+        <p>Tax Planning</p>
+        <p>Incorporating a business</p>
+        <p>sole proprietor ship</p>
+        <p>Partnership</p>
+        <p>incorporation</p>
+        <p>HST and Buisness Registrations for Uber</p>
+
+        <h1
+          style="
+            padding: 20px;
+            text-align: center;
+            color: #006fb9;
+            position: absolute;
+            bottom: 10%;
+          "
+          onclick="navigate('contact')"
+        >
+          <span style="border-bottom: 1px solid">Hours / Contact</span>
+          <br />
+          <i class="ri-arrow-down-s-line"></i>
+        </h1>
+      </div>
+    </section>
+
+    <section id="contact" class="fullvh" data-aos="fade-in">
+      <div class="wrapper">
+        <h1
+          style="
+            padding: 20px;
+            text-align: center;
+            color: #006fb9;
+            position: absolute;
+            top: 10%;
+          "
+          onclick="navigate('services')"
+        >
+          <i class="ri-arrow-up-s-line"></i>
+          <br />
+          <span style="border-bottom: 1px solid">Services</span>
+        </h1>
+        <h1>Contact</h1>
+        <a href="mailto:tax@ibansalcpa.com">
+          <i class="ri-mail-line"></i> tax@ibansalcpa.com
+        </a>
+        <hr style="width: 150%" />
+        <h1>Hours</h1>
+        <div id="hours">
+          <p>Mon -> Fri</p>
+          <p>10:00->6:00</p>
+          <p>Saturday</p>
+          <p>12:00->6:00</p>
+          <p>Sunday</p>
+          <p>CLOSED</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <!-- Swiped Events -->
+    <script src="https://cdn.jsdelivr.net/npm/swiped-events@1.1.4/src/swiped-events.min.js"></script>
+    <script>
+      // AOS
+      AOS.init();
+
+      let activeSection = "home";
+
+      const section = document.getElementsByClassName("fullvh");
+      // console.log(section);
+
+      let winheight = window.innerHeight;
+      let winwidth = window.innerWidth;
+      // console.log(`${winheight} ${winwidth}`);
+
+      let sectionArr = [...section];
+      // console.log(sectionArr);
+
+      sectionArr.forEach((elem, index) => {
+        // console.log(elem);
+        elem.style.cssText = `height: ${winheight}px; position: relative;`;
+        // width: ${winwidth}px;
+      });
+
+      function resizeEvent() {
+        let winheight = window.innerHeight;
+        let winwidth = window.innerWidth;
+        sectionArr.forEach((elem, index) => {
+          // console.log(elem);
+          elem.style.cssText = `height: ${winheight}px; position: relative;`;
+        });
+      }
+
+      function navigate(dest) {
+        let elem = document.getElementById(dest);
+        elem.scrollIntoView({ behavior: "smooth" });
+        activeSection = dest;
+      }
+
+      window.addEventListener("wheel", myFunction);
+      function myFunction(e) {
+        if (e.deltaY > 0) {
+          // console.log("Scroll down");
+          if (activeSection === "home") {
+            navigate("services");
+          } else if (activeSection === "services") {
+            navigate("contact");
+          }
+        } else {
+          // console.log("scroll up");
+          if (activeSection === "contact") {
+            navigate("services");
+          } else if (activeSection === "services") {
+            navigate("home");
+          }
+        }
+      }
+
+      window.addEventListener("swiped", function (e) {
+        let direction = e.detail.dir;
+        if (e.detail.dir === "up") {
+          // When you swipe up (bottom to top),
+          // you expect page to move down
+          // so actions are reversed from mouse direction
+          if (activeSection === "home") {
+            navigate("services");
+          } else if (activeSection === "services") {
+            navigate("contact");
+          }
+        } else {
+          if (activeSection === "contact") {
+            navigate("services");
+          } else if (activeSection === "services") {
+            navigate("home");
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
