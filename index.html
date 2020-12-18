@@ -28,6 +28,7 @@
     }
     body {
       overflow-y: hidden;
+      overflow-x: hidden;
     }
     h1,
     h2,
@@ -49,6 +50,7 @@
       font-family: "Hind", sans-serif;
     }
     section {
+      position: relative;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -78,7 +80,7 @@
       background: white;
     }
   </style>
-  <body onresize="resizeEvent">
+  <body>
     <!-- <i class="ri-phone-line"></i>
     <i class="ri-money-dollar-circle-line"></i>
     <i class="ri-taxi-line"></i>
@@ -210,33 +212,37 @@
       const section = document.getElementsByClassName("fullvh");
 
       let winheight = window.innerHeight;
-      let winwidth = window.innerWidth;
 
       let sectionArr = [...section];
 
       sectionArr.forEach((elem, index) => {
-        elem.style.cssText = `height: ${winheight}px; position: relative;`;
+        elem.style.height = `${winheight}px`;
       });
 
+      window.addEventListener("resize", resizeEvent);
+
       function resizeEvent() {
+        console.log("Resize triggered");
         let winheight = window.innerHeight;
         let winwidth = window.innerWidth;
         sectionArr.forEach((elem, index) => {
-          elem.style.cssText = `height: ${winheight}px; position: relative;`;
+          elem.style.height = `${winheight}px`;
         });
       }
 
       function navigate(dest) {
         let elem = document.getElementById(dest);
+        console.log(`Nav to ${dest}`);
+
         elem.scrollIntoView({
+          behavior: "smooth",
           block: "start",
           inline: "nearest",
         });
         activeSection = dest;
       }
 
-      window.addEventListener("wheel", myFunction);
-
+      document.addEventListener("wheel", myFunction);
       function myFunction(e) {
         if (e.deltaY > 0) {
           if (activeSection === "home") {
@@ -253,10 +259,9 @@
         }
       }
 
-      window.addEventListener("swiped", swipefunction);
+      document.addEventListener("swiped", swipefunction);
       function swipefunction(e) {
         let direction = e.detail.dir;
-        console.log(`Swipe direction: ${direction}`);
 
         if (direction === "up") {
           if (activeSection === "home") {
