@@ -258,6 +258,14 @@
         sectionArr.forEach((elem, index) => {
           elem.style.height = `${winheight}px`;
         });
+        let elem = document.getElementById(activeSection);
+        elem.scrollIntoView({
+          // behavior: "smooth", NOTE:
+          // Smooth behavior breaks in chrome
+          // when triggered from the "swiped" event
+          block: "start",
+          inline: "nearest",
+        });
       }
 
       function navigate(dest) {
