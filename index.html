@@ -256,7 +256,14 @@
         console.log(`Nav to ${dest}`);
 
         elem.scrollIntoView({
-          // behavior: "smooth",
+          behavior: "smooth",
+          block: "start",
+          inline: "nearest",
+        });
+        elem.scrollIntoView({
+          // behavior: "smooth", NOTE:
+          // Smooth behavior breaks in chrome
+          // when triggered from the "swiped" event
           block: "start",
           inline: "nearest",
         });
