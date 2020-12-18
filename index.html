@@ -287,20 +287,22 @@
       function swipefunction(e) {
         e.preventDefault();
         let direction = e.detail.dir;
-
-        if (direction === "up") {
-          if (activeSection === "home") {
-            navigate("services");
-          } else if (activeSection === "services") {
-            navigate("contact");
+        console.log(Math.abs(e.detail.yEnd - e.detail.yStart));
+        if (Math.abs(e.detail.yEnd - e.detail.yStart) > 60) {
+          if (direction === "up") {
+            if (activeSection === "home") {
+              navigate("services");
+            } else if (activeSection === "services") {
+              navigate("contact");
+            }
           }
-        }
 
-        if (direction === "down") {
-          if (activeSection === "contact") {
-            navigate("services");
-          } else if (activeSection === "services") {
-            navigate("home");
+          if (direction === "down") {
+            if (activeSection === "contact") {
+              navigate("services");
+            } else if (activeSection === "services") {
+              navigate("home");
+            }
           }
         }
       }
