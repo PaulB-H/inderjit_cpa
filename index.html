@@ -59,6 +59,7 @@
     }
     .wrapper {
       width: 100%;
+      max-width: 620px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -95,6 +96,12 @@
     #services p:nth-child(odd) {
       text-align: right;
     }
+
+    @media only screen and (max-width: 400px) {
+      #cpalogo {
+        max-width: 100% !important;
+      }
+    }
   </style>
   <body>
     <!-- <i class="ri-phone-line"></i>
@@ -121,9 +128,10 @@
         </div>
 
         <img
+          id="cpalogo"
           src="./cpa_logo.jpg"
           alt=""
-          style="max-width: 50%"
+          style="max-width: 50%; margin-top: 25px"
           data-aos="flip-up"
           data-aos-delay="400"
         />
