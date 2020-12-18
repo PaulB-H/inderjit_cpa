@@ -29,6 +29,7 @@
     html,
     body {
       overflow-y: hidden;
+      overflow-x: hidden;
     }
     h1,
     h2,
@@ -57,6 +58,7 @@
       align-items: center;
     }
     .wrapper {
+      width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -78,6 +80,20 @@
       padding-left: 5px;
       padding-right: 5px;
       background: white;
+    }
+
+    #servicelist {
+      width: 100%;
+      padding: 10px;
+    }
+
+    #services p {
+      font-weight: bold;
+      font-size: xx-large;
+    }
+
+    #services p:nth-child(odd) {
+      text-align: right;
     }
   </style>
   <body>
@@ -149,15 +165,14 @@
           <span style="border-bottom: 1px solid">Home</span>
         </h1>
         <div id="servicelist">
-          <p data-aos="flip-right">Tax Planning</p>
-          <p data-aos="flip-up" data-aos-delay="200">
-            Incorporating a business
-          </p>
-          <p data-aos="flip-up" data-aos-delay="400">sole proprietor ship</p>
-          <p data-aos="flip-up" data-aos-delay="600">Partnership</p>
-          <p data-aos="flip-up" data-aos-delay="800">incorporation</p>
-          <p data-aos="flip-up" data-aos-delay="1000">
-            HST and Buisness Registrations for Uber
+          <p data-aos="fade-right">Tax Planning</p>
+          <p data-aos="fade-left">Incorporating</p>
+          <p data-aos="fade-right" data-aos-delay="200">Sole Proprietorship</p>
+          <p data-aos="fade-left" data-aos-delay="200">Partnership</p>
+          <p data-aos="fade-right" data-aos-delay="400">Incorporation</p>
+          <p data-aos="fade-left" data-aos-delay="400">HST</p>
+          <p data-aos="fade-right" data-aos-delay="600">
+            Registrations for Uber
           </p>
         </div>
 
@@ -202,7 +217,7 @@
         <a href="mailto:tax@ibansalcpa.com">
           <i class="ri-mail-line"></i> tax@ibansalcpa.com
         </a>
-        <hr style="width: 150%; margin: 25px 0px" />
+        <hr style="width: 75%; margin: 25px 0px" />
         <h1 style="margin-bottom: 25px">Hours</h1>
         <div id="hours" style="margin-bottom: 25px">
           <p>Mon -> Fri</p>
@@ -310,7 +325,7 @@
       }
 
       document.addEventListener("DOMContentLoaded", function (event) {
-        window.scrollTo(0, 0);
+        // window.scrollTo(0, 0);
       });
     </script>
   </body>
