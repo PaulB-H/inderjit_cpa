@@ -50,6 +50,22 @@
       color: rgb(56, 56, 255);
       font-family: "Hind", sans-serif;
     }
+
+    .nav {
+      padding: 20px;
+      text-align: center;
+      color: #006fb9;
+      position: absolute;
+      user-select: none;
+      cursor: pointer;
+    }
+    .navup {
+      top: 0;
+    }
+    .navdown {
+      bottom: 0;
+    }
+
     section {
       position: relative;
       display: flex;
@@ -90,7 +106,7 @@
 
     #services p {
       font-weight: bold;
-      font-size: xx-large;
+      font-size: x-large;
     }
 
     #services p:nth-child(odd) {
@@ -136,18 +152,7 @@
           data-aos-delay="400"
         />
       </div>
-      <h1
-        style="
-          padding: 20px;
-          text-align: center;
-          color: #006fb9;
-          position: absolute;
-          bottom: 10%;
-          user-select: none;
-          cursor: pointer;
-        "
-        onclick="navigate('services')"
-      >
+      <h1 class="nav navdown" onclick="navigate('services')">
         <span style="border-bottom: 1px solid">Services</span>
         <br />
         <i class="ri-arrow-down-s-line"></i>
@@ -156,18 +161,7 @@
 
     <section id="services" class="fullvh" style="position: relative">
       <div class="wrapper">
-        <h1
-          style="
-            padding: 20px;
-            text-align: center;
-            color: #006fb9;
-            position: absolute;
-            top: 10%;
-            user-select: none;
-            cursor: pointer;
-          "
-          onclick="navigate('home')"
-        >
+        <h1 class="nav navup" onclick="navigate('home')">
           <i class="ri-arrow-up-s-line"></i>
           <br />
           <span style="border-bottom: 1px solid">Home</span>
@@ -184,18 +178,7 @@
           </p>
         </div>
 
-        <h1
-          style="
-            padding: 20px;
-            text-align: center;
-            color: #006fb9;
-            position: absolute;
-            bottom: 10%;
-            user-select: none;
-            cursor: pointer;
-          "
-          onclick="navigate('contact')"
-        >
+        <h1 class="nav navdown" onclick="navigate('contact')">
           <span style="border-bottom: 1px solid">Hours / Contact</span>
           <br />
           <i class="ri-arrow-down-s-line"></i>
@@ -203,29 +186,19 @@
       </div>
     </section>
 
-    <section id="contact" class="fullvh" data-aos="fade-in">
+    <section id="contact" class="fullvh">
       <div class="wrapper">
-        <h1
-          style="
-            padding: 20px;
-            text-align: center;
-            color: #006fb9;
-            position: absolute;
-            top: 10%;
-            user-select: none;
-            cursor: pointer;
-          "
-          onclick="navigate('services')"
-        >
+        <h1 class="nav navup" onclick="navigate('services')">
           <i class="ri-arrow-up-s-line"></i>
           <br />
           <span style="border-bottom: 1px solid">Services</span>
         </h1>
+
         <h1 style="margin-bottom: 25px">Contact</h1>
         <a href="mailto:tax@ibansalcpa.com">
           <i class="ri-mail-line"></i> tax@ibansalcpa.com
         </a>
-        <hr style="width: 75%; margin: 25px 0px" />
+        <hr style="width: 75%; margin: 25px 0px" data-aos="zoom-in" />
         <h1 style="margin-bottom: 25px">Hours</h1>
         <div id="hours" style="margin-bottom: 25px">
           <p>Mon -> Fri</p>
