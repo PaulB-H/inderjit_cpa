@@ -313,13 +313,11 @@
       const servicesdiv = document.getElementById("services");
       const contactsdiv = document.getElementById("contact");
 
-      const section = document.getElementsByClassName("fullvh");
-
       let winheight = window.innerHeight;
 
-      let sectionArr = [...section];
+      let section = document.querySelectorAll(".fullvh");
 
-      sectionArr.forEach((elem, index) => {
+      section.forEach((elem) => {
         elem.style.height = `${winheight}px`;
       });
 
@@ -327,7 +325,7 @@
 
       function resizeEvent() {
         let winheight = window.innerHeight;
-        sectionArr.forEach((elem, index) => {
+        section.forEach((elem, index) => {
           elem.style.height = `${winheight}px`;
         });
 
